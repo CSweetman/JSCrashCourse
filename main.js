@@ -73,3 +73,93 @@ console.log(fruits);
 //How to check if an item is an array
 console.log(Array.isArray(fruits));
 console.log(fruits.indexOf("orange"));
+
+
+//Object literals
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: "30",
+    hobbies: ["music", "movies", "sports"],
+    address: {
+        street: "50 main st",
+        city: "Boston",
+        state: "MA"
+    }
+}
+
+console.log(person);
+console.log(person.firstName); //Dot syntax to access properties
+const {firstName, lastName, address: {city} } = person; //pulls differn things out
+console.log(firstName, city);
+person.email = "john@gmail.com";
+console.log(person);
+
+
+//Array of Objetcs
+const todos = [
+    {
+        id: 1,
+        text: "Take out tash",
+        isComplete: true,
+    },
+    {
+        id: 2,
+        text: "Meeting with boss",
+        isComplete: true,
+    },
+    {
+        id: 3,
+        text: "Dentist appt",
+        isComplete: false,
+    }
+];
+console.log(todos);
+console.log(todos[1].text);
+
+/*json is a data format used for full stack development and APIs. (sent and received in json format)
+* array of objects is very similar in structure
+*/
+
+const todoJSON = JSON.stringify(todos);
+console.log(todoJSON);  //converts array of objects to json, this is how you will send data to a server
+
+//Loops
+//For
+for(let i=0; i<10; i++){        //Same syntax as java
+    console.log(`For Loop Number: ${i}`);
+}
+
+//While
+let i = 0;
+while(i<10){
+    console.log(`While Loop Number: ${i}`)
+    i++
+}
+
+//Standard way of looping through arrays
+for(let i=0; i<todos.length; i++){
+    console.log(todos[i].text);
+}
+
+//for of loop, essentially a for each loop
+for(let todo of todos){
+    console.log(todo.text);
+}
+
+//forEach, map, filter
+todos.forEach(function(todo){
+    console.log(todo.text);     //Looks much better with arrow function
+});
+//Map
+const todoText = todos.map(function(todo){
+    return todo.text;     //Returns an array of text
+});
+console.log(todoText);
+//Filters, adds whatever fufills the condition
+const todoCompleted = todos.filter(function(todo){
+    return todo.isComplete === true;
+}).map(function(todo){      //Chain functions to return only the text
+    return todo.text;   //VERY VERY POWERFUL
+})
+console.log(todoCompleted);
