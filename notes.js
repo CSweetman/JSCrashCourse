@@ -151,11 +151,13 @@ for(let todo of todos){
 todos.forEach(function(todo){
     console.log(todo.text);     //Looks much better with arrow function
 });
+
 //Map
 const todoText = todos.map(function(todo){
     return todo.text;     //Returns an array of text
 });
 console.log(todoText);
+
 //Filters, adds whatever fufills the condition
 const todoCompleted = todos.filter(function(todo){
     return todo.isComplete === true;
@@ -163,3 +165,6 @@ const todoCompleted = todos.filter(function(todo){
     return todo.text;   //VERY VERY POWERFUL
 })
 console.log(todoCompleted);
+
+
+todos.forEach((todo)=>console.log("Task: " + todo.text));
